@@ -12,6 +12,7 @@ const Navbar = () => {
     <li>  <NavLink className='my-2 md:mr-6 font-poppins text-lg font-normal' to='/'>Home</NavLink></li>
     <li> <NavLink className='my-2 md:mr-6 font-poppins text-lg font-normal' to='/about'>About</NavLink></li>
     <li> <NavLink className='my-2 md:mr-6 font-poppins text-lg font-normal' to='/career'>Career</NavLink></li>
+    <li>  <NavLink className='my-2 md:mr-6 font-poppins text-lg font-normal' to='/signup'>SignUp</NavLink></li>
   </>
   return (
 

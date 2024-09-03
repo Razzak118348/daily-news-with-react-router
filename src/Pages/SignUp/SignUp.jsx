@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../Share/Navbar/Navbar";
 
 
-const Login = () => {
+const SignUp = () => {
     return (
         <div className="bg-gray-200 min-h-screen p-3 rounded-2xl ">
             <Navbar></Navbar>
@@ -23,28 +23,33 @@ const Login = () => {
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
       <form className="card-body">
         <div className="form-control">
+        <label className="label">
+            <span className="label-text text-lg">Your name</span>
+          </label>
+          <input type="text" name="name" placeholder="Input your Email" className="input input-bordered" required />
           <label className="label">
             <span className="label-text text-lg">Email</span>
           </label>
-          <input type="email" name="" placeholder="email" className="input input-bordered" required />
+          <input type="email" name="email" placeholder="email" className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text text-xl">Password</span>
           </label>
-          <input type="password" name="" placeholder="password" className="input input-bordered" required />
-          <label className="label">
-            <a href="#" className="label-text-alt link link-hover text-lg">Forgot password?</a>
-            
-          </label>
+          <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+       <p className="mt-5 flex space-x-2 text-lg">
+        <input type="checkbox" name="" id="" />
+       <span> Accept <Link className=" font-bold underline text-[#706F6F] " to={'/terms'}>Terms & Conditions</Link></span>
+       </p>
           <label className="label text-xl ">
-            <Link to={'/signup'} className=" text-lg">Don't Have An Account ? <span className="text-red-600 font-bold underline">Register</span>
+            <Link to={'/login'} className=" text-lg">
+                Already have an Account ? <span className="text-red-600 font-bold underline">Login</span>
             </Link>
             
           </label>
         </div>
         <div className="form-control mt-6">
-          <button className="btn bg-[#403F3F] text-white font-bold text-2xl">Login</button>
+          <button className="btn bg-[#403F3F] text-white font-bold text-2xl">SignUp</button>
         </div>
       </form>
     </div>
@@ -55,4 +60,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignUp;
