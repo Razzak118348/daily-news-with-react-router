@@ -1,13 +1,18 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
+import { AuthContext } from "../../../Context/AuthProvider";
+import { useContext } from "react";
 
 
 const Navbar = () => {
   
-  // when component mount and scroll the windo then the useEffect will work 
+  const {user,LogOut}= useContext(AuthContext)
 
-
-
+const handleSignOut = ()=>{
+  LogOut()
+.then(result => console.log(' successfully logout '))
+.catch(error => console.log(error.message))
+}
   const Navlink = <>
     <li>  <NavLink className='my-2 md:mr-6 font-poppins text-lg font-normal' to='/'>Home</NavLink></li>
     <li> <NavLink className='my-2 md:mr-6 font-poppins text-lg font-normal' to='/about'>About</NavLink></li>
@@ -48,7 +53,12 @@ const Navbar = () => {
   </div>
   <div className="navbar-end">
   <p className="  mr-2  w-6 md:w-10 h-6 md:h-10"><FaCircleUser className="w-6 md:w-10 h-6 md:h-10"></FaCircleUser></p>
-  <Link to='/login' className="hover:text-black btn bg-[#403F3F] font-poppins text-xl font-semibold text-white ">Login</Link>
+  {
+    user ? <button onClick={handleSignOut} className="btn hover:text-black  bg-[#403F3F] font-poppins text-xl font-semibold text-white">Sign Out</button> 
+    :  
+    <Link to='/login' className="hover:text-black btn bg-[#403F3F] font-poppins text-xl font-semibold text-white"><button>Login</button></Link>
+  }
+ 
   </div>
 </div>
    
