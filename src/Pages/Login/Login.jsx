@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import Navbar from "../Share/Navbar/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
@@ -6,8 +6,8 @@ import { AuthContext } from "../../Context/AuthProvider";
 
 
 const Login = () => {
-
-  const { SignIn } = useContext(AuthContext)
+const navigate = useNavigate();
+  const { SignIn ,Loginbutton} = useContext(AuthContext)
 
   const handleLogin = (e) => {
     e.preventDefault(); // Prevent form from submitting and refreshing the page
@@ -22,15 +22,18 @@ const Login = () => {
 
     // ei function Authprovider.jsx k call korbe 
     SignIn(email, password)
-      .then(result => console.log(result.user))
+      .then((result) => {
+        console.log(result.user)
+
+navigate('/')
+
+      })
       .catch(error => console.log(error.message))
 
 
   }
 
-  const handleLogintoHome = () => {
-    S
-  }
+
 
   return (
     <div className="bg-gray-200 min-h-screen rounded-2xl ">
@@ -73,7 +76,7 @@ const Login = () => {
                   </label>
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn bg-[#403F3F] text-white font-bold text-2xl ">Login</button>
+                  <button type="submit" className="btn bg-[#403F3F] text-white font-bold text-2xl ">Login</button>
                 </div>
               </form>
             </div>

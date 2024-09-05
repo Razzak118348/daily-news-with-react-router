@@ -20,7 +20,10 @@ const password = form.get('password')
 console.log(name,photoUrl,email,password)
 
  creatUser(email,password)
- .then(result => console.log(result.user))
+ .then((result) => {
+  console.log(result.user)
+  
+ })
  .catch(error=>console.log(error.message))
 
  }

@@ -54,7 +54,7 @@ const handleSignOut = ()=>{
   <div className="navbar-end">
   <p className="  mr-2  w-6 md:w-10 h-6 md:h-10"><FaCircleUser className="w-6 md:w-10 h-6 md:h-10"></FaCircleUser></p>
   {
-    user ? <button onClick={handleSignOut} className="btn hover:text-black  bg-[#403F3F] font-poppins text-xl font-semibold text-white">Sign Out</button> 
+   ( user ) ? <button onClick={handleSignOut} className="btn hover:text-black  bg-[#403F3F] font-poppins text-xl font-semibold text-white">Sign Out</button> 
     :  
     <Link to='/login' className="hover:text-black btn bg-[#403F3F] font-poppins text-xl font-semibold text-white"><button>Login</button></Link>
   }

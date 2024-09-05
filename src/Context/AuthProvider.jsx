@@ -24,6 +24,7 @@ const SignIn =(email,password)=>{
     return signInWithEmailAndPassword(auth,email,password)
 }
 
+
 //autimatically call hobe ,, jdi user thake tahole nije nije niye nibe  ar na thakle nibe na => jokhon dorkar hobe na thokhon clean korte hobe ,,jokhon onno component e jai tokhon clean korte hobe na hole memory lick korbe tai Unsubscribe korte hoy 
 useEffect(()=>{
    const Unsubscribe = onAuthStateChanged(auth,(currentUser)=>{
