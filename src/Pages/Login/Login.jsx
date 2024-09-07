@@ -1,13 +1,18 @@
-import { Link,  useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Navbar from "../Share/Navbar/Navbar";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
-
+import { FaEye } from "react-icons/fa6";
+import { FaEyeSlash } from "react-icons/fa";
 
 
 const Login = () => {
-const navigate = useNavigate();
-  const { SignIn ,Loginbutton} = useContext(AuthContext)
+  const [passwordType, setPasswordType] = useState(false);
+  const [ errorHndle, setErrorHandle ] = useState('')
+
+  const navigate = useNavigate();
+
+  const { SignIn } = useContext(AuthContext)
 
   const handleLogin = (e) => {
     e.preventDefault(); // Prevent form from submitting and refreshing the page
@@ -15,21 +20,21 @@ const navigate = useNavigate();
     // const email = e.target.email.value;
     // console.log("Email:", email);
 
-    //new format 
+    //new format
     const form = new FormData(e.currentTarget);
     const email = form.get('email')
     const password = form.get('password')
 
-    // ei function Authprovider.jsx k call korbe 
+    setErrorHandle('')
+    // ei function Authprovider.jsx k call korbe
     SignIn(email, password)
       .then((result) => {
         console.log(result.user)
 
-navigate('/')
+        navigate('/')
 
       })
-      .catch(error => console.log(error.message))
-
+      .catch(error =>setErrorHandle(error.message))
 
   }
 
@@ -64,7 +69,22 @@ navigate('/')
                   <label className="label">
                     <span className="label-text text-xl">Password</span>
                   </label>
-                  <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                  <div className="flex  w-full">
+                <input
+                  type={passwordType ? "text" : "password"}
+                  name="password"
+
+                  placeholder="password"
+                  className="input input-bordered w-full"
+                  required
+                />
+                <span
+                  className="w-2 mt-5 -ml-6 "
+                  onClick={() => setPasswordType(!passwordType)}
+                >
+                  {passwordType ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
+                </span>
+              </div>
                   <label className="label">
                     <a href="#" className="label-text-alt link link-hover text-lg">Forgot password?</a>
 
@@ -79,6 +99,11 @@ navigate('/')
                   <button type="submit" className="btn bg-[#403F3F] text-white font-bold text-2xl ">Login</button>
                 </div>
               </form>
+
+              {errorHndle && (
+                <p className="text-red-600 font-medium my-4 mx-auto">{errorHndle}</p>
+              )}
+
             </div>
           </div>
         </div>

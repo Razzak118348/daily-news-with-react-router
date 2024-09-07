@@ -1,9 +1,4 @@
-[
-    {
-        "id": "0",
-        "name": "All News"
-    },
-    {
+[{
         "id": "1",
         "name": "Breaking News"
     },

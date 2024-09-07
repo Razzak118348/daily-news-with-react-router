@@ -5,8 +5,8 @@ import { useContext } from "react";
 
 
 const Navbar = () => {
-  
-  const {user,LogOut}= useContext(AuthContext)
+
+  const {user,LogOut,loading}= useContext(AuthContext)
 
 const handleSignOut = ()=>{
   LogOut()
@@ -19,9 +19,16 @@ const handleSignOut = ()=>{
     <li> <NavLink className='my-2 md:mr-6 font-poppins text-lg font-normal' to='/career'>Career</NavLink></li>
     <li>  <NavLink className='my-2 md:mr-6 font-poppins text-lg font-normal' to='/signup'>SignUp</NavLink></li>
   </>
-  return (
 
-    <div className="navbar  sticky  top-2 w-auto  bg-base-200 mt-8 rounded-xl mb-4">
+
+
+if(loading){
+    return <div className="flex justify-center items-center text-center mt-20"><span className="loading loading-spinner loading-lg "></span></div>
+}
+
+ else return (
+
+    <div className="navbar  sticky  top-2 w-auto  bg-base-200 mt-8 rounded-xl mb-6">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -44,7 +51,7 @@ const handleSignOut = ()=>{
        {Navlink}
       </ul>
     </div>
-   
+
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -54,17 +61,15 @@ const handleSignOut = ()=>{
   <div className="navbar-end">
   <p className="  mr-2  w-6 md:w-10 h-6 md:h-10"><FaCircleUser className="w-6 md:w-10 h-6 md:h-10"></FaCircleUser></p>
   {
-   ( user ) ? <button onClick={handleSignOut} className="btn hover:text-black  bg-[#403F3F] font-poppins text-xl font-semibold text-white">Sign Out</button> 
-    :  
+   ( user ) ? <button onClick={handleSignOut} className="btn hover:text-black  bg-[#403F3F] font-poppins text-xl font-semibold text-white">Sign Out</button>
+    :
     <Link to='/login' className="hover:text-black btn bg-[#403F3F] font-poppins text-xl font-semibold text-white"><button>Login</button></Link>
   }
- 
+
   </div>
 </div>
-   
+
   );
 };
 
 export default Navbar;
-
-

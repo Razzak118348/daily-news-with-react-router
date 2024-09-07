@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import EachNavNews from "./EachNavNews";
+import { AuthContext } from "../../../Context/AuthProvider";
 
 const LeftSideNav = () => {
   const [categories, setCategories] = useState([]);
@@ -25,16 +27,24 @@ const LeftSideNav = () => {
     //ager data erase korte hobe then new upload korte hobe
     // setNavNewsForSelection([])
     console.log(id);
-   
-    const FilterNews = newsFornav.filter((news) =>(news.category_id) == id);
+
+    const FilterNews = newsFornav.filter((news) => (news.category_id) == id);
     // console.log(FilterNews)
     setNavNewsForSelection(FilterNews)
     console.log(NavNewsForSelection)
+
   };
 
-  return (
+  const {loading} = useContext(AuthContext)
+
+  if(loading){
+      return <div className="flex justify-center items-center text-center mt-20"><span className="loading loading-spinner loading-lg "></span></div>
+  }
+
+
+ else return (
     <div className="font-poppins ">
-      <h2 className="text-2xl font-semibold">All category </h2>
+      <h2 className="text-2xl font-semibold">News category </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1">
         {categories.map((category) => (
           <button
@@ -49,19 +59,10 @@ const LeftSideNav = () => {
         ))}
       </div>
 
-      <div className="mt-10">
-        <div className="card card-compact bg-base-100 w-96 shadow-xl">
-          <figure>
-            <img src="" alt="news-picture" />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">Shoes!</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
+      <div className="mt-10 mx-auto md:mx-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-16 ">
+        {
+          NavNewsForSelection.map((EachNews) =><EachNavNews key={EachNews.title} EachNews={EachNews}></EachNavNews>)
+        }
       </div>
     </div>
   );
