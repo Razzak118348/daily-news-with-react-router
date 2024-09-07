@@ -7,25 +7,42 @@ import PlaygruondImage from '../../../assets/qZone3.png'
 import './RightSide.css';
 import { useContext } from "react";
 import { AuthContext } from "../../../Context/AuthProvider";
+import { getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import app from "../../../Firebase/Firebase.config";
 
 const RightSideNav = () => {
 
-  const {loading} = useContext(AuthContext)
+  const {loading,user} = useContext(AuthContext)
 
   if(loading){
       return <div className="flex justify-center items-center text-center mt-20"><span className="loading loading-spinner loading-lg "></span></div>
   }
 
+  const auth = getAuth(app)
 
- else return (
+const googleLogin =()=>{
+const provider = new GoogleAuthProvider(auth)
+signInWithPopup(auth,provider)
+.then((result)=>console.log(result.user))
+.catch(error => console.log(error.message))
+}
+
+const gitHubLogin = ()=>{
+const provider = new GithubAuthProvider(auth)
+signInWithPopup(auth,provider)
+.then(result => console.log(result.user))
+.catch(error => console.log(error.message))
+}
+
+  return (
     <div className="  rounded-lg mb-10">
       <h2 className="text-2xl font-poppins font-bold  mb-4">Login With</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-1 gap-5">
-        <button className="btn btn-wide text-blue-400 border-2 border-blue-400 text-lg font-medium">
+        <button onClick={googleLogin} className="btn btn-wide text-blue-400 border-2 border-blue-400 text-lg font-medium">
           <FaGoogle></FaGoogle>
           Google
         </button>
-        <button className="btn btn-wide text-black border-2 border-black text-lg font-medium">
+        <button onClick={gitHubLogin} className="btn btn-wide text-black border-2 border-black text-lg font-medium">
           <FaGithub></FaGithub>
           Login with Github
         </button>
