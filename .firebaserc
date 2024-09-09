@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "daily-news-with-react",
+    "production": "daily-news-with-react"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}
