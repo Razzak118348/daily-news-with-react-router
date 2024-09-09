@@ -5,6 +5,8 @@ import NewsDetails from "../Pages/Newsdetails/NewsDetails";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivetRout from "./PrivetRout";
+import About from "../Pages/About/About";
+import Career from "../Pages/Career/Career";
 
 
 const router = createBrowserRouter([
@@ -31,7 +33,18 @@ const router = createBrowserRouter([
         {
           path:'/signup',
           element:<SignUp></SignUp>
+        },
+        {
+          path:'/about',
+          element:<About></About>
+        },
+        {
+          path:'/career',
+          element:<Career></Career>
+
         }
+
+
       ]
     },
   ]);

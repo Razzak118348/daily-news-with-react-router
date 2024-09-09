@@ -5,7 +5,7 @@ import { FaEye } from "react-icons/fa";
 
 const NewsCart = ({ SingleNews }) => {
   console.log(SingleNews);
-  const { author, image_url, title, details, category_id, rating, total_view,_id } =
+  const { author, image_url, title, details,  rating, total_view,_id } =
     SingleNews;
 
   return (
