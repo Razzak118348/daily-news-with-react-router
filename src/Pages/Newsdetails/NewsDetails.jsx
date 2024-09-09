@@ -6,18 +6,19 @@ import Navbar from '../Share/Navbar/Navbar';
 
 const NewsDetails = () => {
     const { id } = useParams()
+    console.log('hi this is newsdetails')
     return (
         <div>
             <Header></Header>
             <Navbar></Navbar>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-           
+
 
                 <div className="col-span-3">
                     <img src="" alt="" />
                     <p>{id} </p>
                 </div>
-               
+
 
                 <div>
                     <RightSideNav></RightSideNav>

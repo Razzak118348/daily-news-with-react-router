@@ -6,14 +6,18 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+console.log('inside firebase config ',
+        import.meta.env.VITE_PASS)
+    //.env file theke import korte hobe
+
 const firebaseConfig = {
-    apiKey: "AIzaSyAGkaH_b63ykyDLeSjRJxs_c4jhOjTEjW4",
-    authDomain: "daily-news-with-react.firebaseapp.com",
-    projectId: "daily-news-with-react",
-    storageBucket: "daily-news-with-react.appspot.com",
-    messagingSenderId: "737850266299",
-    appId: "1:737850266299:web:7a213003d3758d47bdcf9e",
-    measurementId: "G-DPMNS94K61"
+    apiKey: import.meta.env.VITE_APIKEY,
+    authDomain: import.meta.env.VITE_AUTHDOMAIN,
+    projectId: import.meta.env.VITE_PROJECTID,
+    storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+    messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+    appId: import.meta.env.VITE_APPID,
+    measurementId: import.meta.env.VITE_MEASUREMENTID,
 };
 
 // Initialize Firebase

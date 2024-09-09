@@ -5,7 +5,7 @@ import { FaEye } from "react-icons/fa";
 
 const NewsCart = ({ SingleNews }) => {
   console.log(SingleNews);
-  const { author, image_url, title, details, category_id, rating, total_view } =
+  const { author, image_url, title, details, category_id, rating, total_view,_id } =
     SingleNews;
 
   return (
@@ -44,7 +44,7 @@ const NewsCart = ({ SingleNews }) => {
           <p className="my-6">
             {details.slice(0, 400)}{" "}
             <Link
-              to={`/news/${category_id}`}
+              to={`/news/${_id}`}
               className="ml-3 text-xl text-red-500 underline hover:text-green-500"
             >
               Read More

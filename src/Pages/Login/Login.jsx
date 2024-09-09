@@ -1,9 +1,11 @@
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../Share/Navbar/Navbar";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import { FaEye } from "react-icons/fa6";
 import { FaEyeSlash } from "react-icons/fa";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import app from "../../Firebase/Firebase.config";
 
 
 const Login = () => {
@@ -11,8 +13,9 @@ const Login = () => {
   const [ errorHndle, setErrorHandle ] = useState('')
 
   const navigate = useNavigate();
-
+const location = useLocation();
   const { SignIn } = useContext(AuthContext)
+  console.log(location)
 
   const handleLogin = (e) => {
     e.preventDefault(); // Prevent form from submitting and refreshing the page
@@ -31,13 +34,33 @@ const Login = () => {
       .then((result) => {
         console.log(result.user)
 
-        navigate('/')
+//navigate after login => jekhane age jaite chaisilo okhane niye jabe
+
+        navigate(location?.
+          state
+          ?location.state : '/')
+//jodi location thake er sathe jdi state o thake tahole location.state e niye jaw ar na hole home e niye jaw
 
       })
       .catch(error =>setErrorHandle(error.message))
 
   }
 
+const auth = getAuth(app)
+  const handleGoogleSignIn =()=>{
+const provider  = new GoogleAuthProvider()
+
+signInWithPopup(auth,provider)
+.then((result)=>{console.log(result.user)
+  //navigate after login => jekhane age jaite chaisilo okhane niye jabe
+
+  navigate(location?.
+    state
+    ?location.state : '/')
+//jodi location thake er sathe jdi state o thake tahole location.state e niye jaw ar na hole home e niye jaw
+})
+.catch(error=>console.log(error.message))
+  }
 
 
   return (
@@ -97,6 +120,9 @@ const Login = () => {
                 </div>
                 <div className="form-control mt-6">
                   <button type="submit" className="btn bg-[#403F3F] text-white font-bold text-2xl ">Login</button>
+                </div>
+                <div className="form-control mt-6">
+                  <button onClick={handleGoogleSignIn} type="submit" className="btn bg-[#403F3F] text-white font-bold text-2xl ">Login with Google</button>
                 </div>
               </form>
 
