@@ -15,7 +15,7 @@ const SignUp = () => {
     e.preventDefault()
 
     const form = new FormData(e.currentTarget);
-    const email = form.get('email') //get() hold the name property 
+    const email = form.get('email') //get() hold the name property
     const name = form.get('name')
     const photoUrl = form.get('photo')
     const password = form.get('password')
@@ -27,7 +27,7 @@ const SignUp = () => {
       .then((result) => {
         console.log(result.user)
 
-        //sent email verification 
+        //sent email verification
         sendEmailVerification(result.user)
           .then(() => alert("Please check Your Email to Verify the Account"))
           .catch((error) => setErrorHandle(error.message))
@@ -40,7 +40,7 @@ const SignUp = () => {
   return (
     <div className="bg-gray-200 min-h-screen p-3 rounded-2xl ">
       <Navbar></Navbar>
-      <div className="font-poppins mt-8 mb-10 lg:mx-80 lg:my-40 bg-[#FFFFFF] border border-green-300 text-center m-8  rounded-xl">
+      <div className="font-poppins mt-44 md:mt-8 mb-10 lg:mx-80 lg:my-40 bg-[#FFFFFF] border border-green-300 text-center  rounded-xl">
         <h2 className="text-xl md:text-4xl font-semibold text-[rgb(64,63,63)] mt-9">Please Register </h2>
 
         <hr className="mt-8" />

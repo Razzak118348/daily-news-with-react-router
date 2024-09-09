@@ -66,7 +66,7 @@ signInWithPopup(auth,provider)
   return (
     <div className="bg-gray-200 min-h-screen rounded-2xl ">
       <Navbar></Navbar>
-      <div className="font-poppins mt-8 mb-10 lg:mx-80 lg:my-40 bg-[#FFFFFF] border border-green-300 text-center m-8  rounded-xl">
+      <div className="font-poppins mt-44 md:mt-8 mb-10 lg:mx-80 lg:my-40 bg-[#FFFFFF] border border-green-300 text-center   rounded-xl">
         <h2 className="text-xl md:text-4xl font-semibold text-[rgb(64,63,63)] mt-9">Login your account</h2>
 
         <hr className="mt-8" />
